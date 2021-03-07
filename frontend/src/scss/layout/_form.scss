@@ -1,0 +1,14 @@
+.form {
+  .form-field {
+    &:not(:last-child) {
+      margin-bottom: 1em;
+    }
+    &.bordered {
+      border: 1px solid $light-grey;
+    }
+  }
+  .label-text {
+    font-weight: 700;
+    font-size: 1em;
+  }
+}

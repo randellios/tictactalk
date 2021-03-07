@@ -4,18 +4,14 @@ export interface SoundType {
 }
 export interface SoundTypes extends Array<SoundType> {}
 
-export interface Sound {
-  initial: {
-    name: string;
-  };
-  medial: {
-    name: string;
-  };
-  final: {
-    name: string;
-  };
-}
-
 export interface Sounds {
   [key: string]: Sound;
+}
+
+export interface SoundData {
+  name: string;
+}
+
+export interface Sound {
+  [key: string]: SoundData[];
 }

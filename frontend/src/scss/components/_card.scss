@@ -1,0 +1,36 @@
+.card {
+  background: #fff;
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: $shadow-sm;
+
+  .card-heading {
+    background: repeating-linear-gradient(
+      45deg,
+      $primary-color,
+      $primary-color 5px,
+      darken($primary-color, .5%) 5px,
+      darken($primary-color, .5%) 10px
+    );
+    position: relative;
+    z-index: 10;
+    border: 5px solid #e78700;
+    // background: $primary-color;
+    padding: 8px;
+    border-radius: 15px 15px 0 0;
+    font-family: $header-font-stack;
+    color: #fff;
+    text-shadow: 2px 2px 1px #e78700, -2px 2px 1px #e78700, 2px -2px 1px #e78700,
+      -2px -2px 1px #e78700, 0px 2px 1px #e78700, 0px -2px 1px #e78700,
+      0px 4px 1px #c96100, 2px 4px 1px #c96100, -2px 4px 1px #c96100;
+    font-size: 1.3em;
+    text-align: center;
+  }
+  
+  .card-content {
+    border: 5px solid $light-grey;
+    border-radius: 0 0 15px 15px;
+    padding: 10px;
+    margin-top: -5px;
+  }
+}

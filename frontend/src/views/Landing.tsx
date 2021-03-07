@@ -7,6 +7,8 @@ import {
   setIsHostAction,
   setGameConfigAction,
 } from '../actions/mainActions';
+import PageContent from '../components/PageContent';
+import gameExample from '../img/game-example.png';
 
 interface LandingProps {
   setActiveView: Function;
@@ -20,24 +22,38 @@ export const Landing: FunctionComponent<LandingProps> = ({
   setIsHost,
 }) => (
   <div>
-    <h1>Landing</h1>
-    <button
-      onClick={() => {
-        flushData();
-        setIsHost(true);
-        setActiveView('CONFIGURE');
-      }}
-    >
-      Create game
-    </button>
-    <button
-      onClick={() => {
-        flushData();
-        setActiveView('JOIN_GAME');
-      }}
-    >
-      Join Game
-    </button>
+    <PageContent title="Tic tac talk">
+      <>
+        <img className="styled-img" src={gameExample} />
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            marginTop: 40,
+          }}
+        >
+          <button
+            className="game-button primary wide"
+            onClick={() => {
+              flushData();
+              setIsHost(true);
+              setActiveView('CONFIGURE');
+            }}
+          >
+            Create game
+          </button>
+          <button
+            className="game-button primary wide"
+            onClick={() => {
+              flushData();
+              setActiveView('JOIN_GAME');
+            }}
+          >
+            Join Game
+          </button>
+        </div>
+      </>
+    </PageContent>
   </div>
 );
 

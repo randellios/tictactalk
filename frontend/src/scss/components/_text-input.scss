@@ -1,0 +1,57 @@
+input[type='text'],
+input[type='number'] {
+  padding: 15px;
+  border: 1px solid $light-grey;
+  outline: none;
+  width: 100%;
+  border-radius: 8px;
+  transition: all 0.2s;
+  font-size: inherit;
+  ovefflow: hidden;
+  &:focus {
+    box-shadow: $shadow-sm;
+    border-color: $primary-color;
+  }
+}
+
+.react-numeric-input b:nth-child(2) {
+  top: -1px !important;
+  right: -1px !important;
+  i {
+    border-color: transparent transparent #e78700 !important;
+  }
+}
+.react-numeric-input b:nth-child(3) {
+  bottom: -1px !important;
+  right: -1px !important;
+  i {
+    border-color: #e78700 transparent transparent !important;
+  }
+}
+
+.react-numeric-input {
+  border-radius: 8px !important;
+  overflow: hidden;
+  width: 100%;
+  input {
+    border: 1px solid $light-grey !important;
+    padding: 15px !important;
+    outline: none !important;
+    width: 100% !important;
+    border-radius: 8px !important;
+    transition: all 0.2s !important;
+    &:focus {
+      border-color: $primary-color !important;
+    }
+  }
+  &:focus-within {
+    transition: all 0.2s !important;
+    box-shadow: $shadow-sm !important;
+  }
+  b {
+    font-size: 1.2em;
+    width: 50px !important;
+    background: $primary-color !important;
+    cursor: pointer !important;
+  }
+}

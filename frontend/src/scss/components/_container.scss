@@ -1,0 +1,22 @@
+.page-content {
+  border-radius: 20px;
+  overflow: hidden;
+  background-image: url('../../img/container-bkg.png');
+
+  .page-content-header {
+    .heading {
+      color: #fff;
+      font-size: 1.8em;
+      text-align: center;
+    }
+    .content {
+      background: #87b606;
+      padding-bottom: 20px;
+      padding-top: 20px;
+    }
+  }
+
+  .page-content-body {
+    padding: 50px 50px;
+  }
+}

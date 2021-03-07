@@ -1,6 +1,6 @@
+import { Sounds } from '../interfaces/sounds.interface';
 
-
-export const sounds = {
+export const sounds: Sounds = {
   p: {
     initial: [
       { name: 'peas' },
@@ -411,6 +411,8 @@ export const sounds = {
   },
 
   ng: {
+    initial: [],
+    medial: [],
     final: [
       { name: 'wing' },
       { name: 'ring' },
@@ -424,7 +426,7 @@ export const sounds = {
     ],
   },
 
-  n: {
+  s: {
     initial: [
       { name: 'sun' },
       { name: 'soap' },
@@ -570,6 +572,7 @@ export const sounds = {
       { name: 'halloween' },
       { name: 'towel' },
     ],
+    final: [],
   },
 
   r: {
@@ -599,6 +602,7 @@ export const sounds = {
       { name: 'camera' },
       { name: 'fairy' },
     ],
+    final: [],
   },
 
   sh: {
@@ -681,7 +685,7 @@ export const sounds = {
     ],
   },
 
-  g: {
+  j: {
     initial: [
       { name: 'jam' },
       { name: 'jar' },
@@ -723,6 +727,7 @@ export const sounds = {
   },
 
   zh: {
+    initial: [],
     medial: [
       { name: 'measuringtape' },
       { name: 'treasure' },
@@ -734,6 +739,7 @@ export const sounds = {
       { name: 'measure' },
       { name: 'collage' },
     ],
+    final: [],
   },
 
   h: {
@@ -761,5 +767,6 @@ export const sounds = {
       { name: 'grasshopper' },
       { name: 'superhero' },
     ],
+    final: [],
   },
 };

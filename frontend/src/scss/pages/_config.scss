@@ -1,0 +1,49 @@
+.config-page {
+  .sound-selection {
+  .sound-selection-heading {
+    display: flex;
+    font-weight: 700;
+    div {
+      flex: 0.5;
+      text-align: center;
+      &:first-child {
+        flex: 1;
+      }
+    }
+  }
+  .sound-row {
+    border-bottom: 1px solid $light-grey;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0.5;
+      &:first-child {
+        justify-content: start;
+        flex: 1;
+        font-family: $header-font-stack;
+        font-size: 1.5em;
+        text-align: left;
+      }
+    }
+  }
+}
+
+.bottom-controls {
+  margin-top: 2.5em;
+  display: flex;
+
+  .game-button {
+    &:first-child {
+      margin-right: 1em;
+    }
+    &:last-child {
+      margin-left: auto;
+    }
+  }
+}
+
+}
