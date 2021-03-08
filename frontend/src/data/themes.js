@@ -1,13 +1,13 @@
-import characters from './characters';
-
 export default {
   jurassic: {
     label: 'Jurassic',
-    characters: ['dino1', 'dino2', 'dino3', 'dino4'],
+    characters: ['spino', 'stego', 'rex', 'terra'],
+    backgroundImage: 'jurassic-bkg.png'
   },
-  princess: {
-    label: 'Princess',
-    characters: ['princess1', 'princess2', 'princess3', 'princess4'],
+  fairytale: {
+    label: 'Fairytale',
+    characters: ['princess', 'prince', 'fairy', 'jester'],
+    backgroundImage: 'fairytale-bkg.png'
   },
 };
 

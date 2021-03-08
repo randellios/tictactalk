@@ -1,0 +1,16 @@
+.host-lobby-page {
+  .game-code {
+    display: flex;
+    height: 250px;
+    align-items: center;
+    justify-content: center;
+
+    .game-code-text {
+      text-align: center;
+      font-size: 3.5em;
+    }
+  }
+  .bottom-controls {
+    margin-top: 2.5em;
+  }
+}

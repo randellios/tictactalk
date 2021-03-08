@@ -1,38 +1,38 @@
 export default {
   jurassic: {
-    dino1: {
-      label: 'Dino 1',
-      image: '',
+    spino: {
+      label: 'Spino',
+      image: 'spino.png',
     },
-    dino2: {
-      label: 'Dino 2',
-      image: '',
+    stego: {
+      label: 'Stego',
+      image: 'stego.png',
     },
-    dino3: {
-      label: 'Dino 3',
-      image: '',
+    rex: {
+      label: 'Rex',
+      image: 'rex.png',
     },
-    dino4: {
-      label: 'Dino 4',
-      image: '',
+    terra: {
+      label: 'Terra',
+      image: 'terra.png',
     },
   },
-  princess: {
-    princess1: {
-      label: 'Princess 1',
-      image: '',
+  fairytale: {
+    princess: {
+      label: 'Princess',
+      image: 'princess.png',
     },
-    princess2: {
-      label: 'Princess 2',
-      image: '',
+    jester: {
+      label: 'Jester',
+      image: 'jester.png',
     },
-    princess3: {
-      label: 'Princess 3',
-      image: '',
+    prince: {
+      label: 'Prince',
+      image: 'prince.png',
     },
-    princess4: {
-      label: 'Princess 4',
-      image: '',
+    fairy: {
+      label: 'Fairy',
+      image: 'fairy.png',
     },
   },
 };

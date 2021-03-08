@@ -6,6 +6,10 @@
     &.bordered {
       border: 1px solid $light-grey;
     }
+    .input-error-text {
+      color: #ff0000;
+      font-size: .8em;
+    }
   }
   .label-text {
     font-weight: 700;

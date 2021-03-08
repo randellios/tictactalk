@@ -33,6 +33,7 @@ interface ConfigureGameProps {
   setGameConfig: Function;
   setGameId: Function;
   setActiveView: Function;
+  isPaired: boolean;
 }
 
 export const ConfigureGame: FunctionComponent<ConfigureGameProps> = ({
@@ -45,6 +46,7 @@ export const ConfigureGame: FunctionComponent<ConfigureGameProps> = ({
   setGameId,
   gameId,
   setActiveView,
+  isPaired,
 }) => {
   const [displayErrors, setDisplayErrors] = useState(false);
   const [soundTypes, setSoundTypes] = useState<SoundTypes | []>(
@@ -145,14 +147,16 @@ export const ConfigureGame: FunctionComponent<ConfigureGameProps> = ({
                   <div className="form-field">
                     <label>
                       <span className="label-text">Your name</span>
-                      {displayErrors && !name.length && (
-                        <span>Enter name!</span>
-                      )}
                       <input
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         type="text"
                       />
+                      {displayErrors && !name.length && (
+                        <span className="input-error-text">
+                          Oops! Please enter name.
+                        </span>
+                      )}
                     </label>
                   </div>
                   <div className="form-field">
@@ -265,15 +269,15 @@ export const ConfigureGame: FunctionComponent<ConfigureGameProps> = ({
             <button className="game-button primary" onClick={onResetConfig}>
               Reset
             </button>
-            {!gameId && (
+            {!isPaired && (
               <button
                 className="game-button primary wide"
                 onClick={() => onConfigReady('LOBBY')}
               >
-                Submit
+                Next
               </button>
             )}
-            {gameId && (
+            {isPaired && (
               <div>
                 <button
                   className="game-button primary"
@@ -304,6 +308,7 @@ const mapStateToProps = (state: RootState) => ({
   hostData: state.hostData,
   guestData: state.guestData,
   gameId: state.gameId,
+  isPaired: state.isPaired,
 });
 
 const mapDispatchToProps = {

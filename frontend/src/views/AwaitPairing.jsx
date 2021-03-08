@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { setActiveViewAction } from '../actions/mainActions';
+import Card from '../components/Card';
+import PageContent from '../components/PageContent';
 import { pushGameUpdate } from '../utils';
 
 const AwaitPairing = ({
@@ -26,10 +28,22 @@ const AwaitPairing = ({
   }, [levelType, hostData, soundTypes, nextMove, rounds]);
 
   return (
-    <div>
-      <h1>Awaiting player to join</h1>
-      <h3>Here is your code: {gameId}</h3>
-      <button onClick={() => setActiveView('CONFIGURE')}>Back</button>
+    <div className="host-lobby-page">
+      <PageContent title="All set up!">
+        <Card title="Here's your game code">
+          <div className="game-code">
+            <div>
+              <div className="game-code-text">{gameId}</div>
+              <div className="game-code-info-text">
+                Give your code to the other player
+              </div>
+            </div>
+          </div>
+        </Card>
+        <div className="bottom-controls">
+          <button className="game-button primary" onClick={() => setActiveView('CONFIGURE')}>Back</button>
+        </div>
+      </PageContent>
     </div>
   );
 };

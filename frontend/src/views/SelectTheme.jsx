@@ -4,6 +4,8 @@ import themesData from '../data/themes';
 import characters from '../data/characters';
 import { pushGameUpdate, emitMessage } from '../utils';
 import { setActiveViewAction } from '../actions/mainActions';
+import PageContent from '../components/PageContent';
+import Card from '../components/Card';
 
 export const SelectTheme = ({
   selectedTheme,
@@ -16,7 +18,7 @@ export const SelectTheme = ({
   const isAwaitingOtherPlayer = ![hostCharacter, guestCharacter].every(
     (c) => c
   );
-  const themes = ['jurassic', 'princess'];
+  const themes = Object.keys(themesData);
   const onSelectTheme = (theme) => pushGameUpdate({ theme });
   const onSelectCharacter = (character) =>
     pushGameUpdate({
@@ -40,41 +42,54 @@ export const SelectTheme = ({
   }, []);
 
   return (
-    <div>
-      {!selectedTheme && (
+    <div className="theme-page">
+      <PageContent title="Choose Theme">
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           {themes.map((theme) => (
-            <div onClick={() => onSelectTheme(theme)}>
-              <h1>{themesData[theme].label}</h1>
-              <img src="https://via.placeholder.com/350" alt="" />
-            </div>
+            <Card
+              title={themesData[theme].label}
+              selected={selectedTheme === theme}
+            >
+              <div
+                className="theme-img"
+                onClick={() => onSelectTheme(theme)}
+                style={{
+                  backgroundImage: `url(/img/${themesData[theme].backgroundImage})`,
+                }}
+              ></div>
+            </Card>
           ))}
         </div>
-      )}
 
-      {selectedTheme && !selectedCharacter && (
-        <>
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            {themesData[selectedTheme].characters.map((character) => (
-              <div onClick={() => onSelectCharacter(character)}>
-                <h3>{characters[selectedTheme][character].label}</h3>
-                <img src="https://via.placeholder.com/200" alt="" />
-              </div>
-            ))}
+        {selectedTheme && !selectedCharacter && (
+          <>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              {themesData[selectedTheme].characters.map((character) => (
+                <div
+                  onClick={() => onSelectCharacter(character)}
+                  className="character-img"
+                >
+                  <img
+                    src={`/img/${characters[selectedTheme][character].image}`}
+                  />
+                  {/* <div>{characters[selectedTheme][character].label}</div> */}
+                </div>
+              ))}
+            </div>
+            <button onClick={() => onSelectTheme(null)}>Go back</button>
+          </>
+        )}
+
+        {selectedCharacter && selectedTheme && (
+          <div>
+            {isAwaitingOtherPlayer && <div>Awaiting other player...</div>}
+            <button disabled={isAwaitingOtherPlayer} onClick={onStartGame}>
+              Start
+            </button>
+            <button onClick={() => onSelectCharacter(null)}>Go back</button>
           </div>
-          <button onClick={() => onSelectTheme(null)}>Go back</button>
-        </>
-      )}
-
-      {selectedCharacter && selectedTheme && (
-        <div>
-          {isAwaitingOtherPlayer && <div>Awaiting other player...</div>}
-          <button disabled={isAwaitingOtherPlayer} onClick={onStartGame}>
-            Start
-          </button>
-          <button onClick={() => onSelectCharacter(null)}>Go back</button>
-        </div>
-      )}
+        )}
+      </PageContent>
     </div>
   );
 };
