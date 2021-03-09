@@ -1,0 +1,23 @@
+.game-page {
+  .game-container {
+    background-size: cover;
+    border-radius: 12px;
+    box-shadow: $shadow-sm;
+  }
+
+  .game-board {
+    width: 300px;
+    
+    .game-board-row {
+      width: 100%;
+      display: flex;
+
+      .game-board-column {
+        background-image: url('/img/frame.png');
+        border: 1px solid black;
+        width: 100px;
+        height: 100px;
+      }
+    }
+  }
+}

@@ -6,6 +6,8 @@ import { pushGameUpdate, emitMessage } from '../utils';
 import { setActiveViewAction } from '../actions/mainActions';
 import PageContent from '../components/PageContent';
 import Card from '../components/Card';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import classNames from 'classnames';
 
 export const SelectTheme = ({
   selectedTheme,
@@ -15,9 +17,12 @@ export const SelectTheme = ({
   setActiveView,
 }) => {
   const selectedCharacter = isHost ? hostCharacter : guestCharacter;
+  const otherPlayersCharacter = isHost ? guestCharacter : hostCharacter;
   const isAwaitingOtherPlayer = ![hostCharacter, guestCharacter].every(
     (c) => c
   );
+  const bothPlayersReady = !!hostCharacter && !!guestCharacter;
+
   const themes = Object.keys(themesData);
   const onSelectTheme = (theme) => pushGameUpdate({ theme });
   const onSelectCharacter = (character) =>
@@ -25,7 +30,7 @@ export const SelectTheme = ({
       [isHost ? 'hostCharacter' : 'guestCharacter']: character,
     });
   const onStartGame = () => {
-    emitMessage('START_GAME');
+    setTimeout(() => setActiveView('GAME'), 500);
   };
 
   if (
@@ -38,13 +43,28 @@ export const SelectTheme = ({
   }
 
   useEffect(() => {
-    window.socket.on('START_GAME', () => setActiveView('GAME'));
-  }, []);
+    window.socket.on('START_GAME', () => onStartGame());
+    if (bothPlayersReady) {
+      emitMessage('START_GAME');
+    }
+  }, [bothPlayersReady]);
 
   return (
     <div className="theme-page">
-      <PageContent title="Choose Theme">
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+      <PageContent
+        title={
+          selectedCharacter && selectedTheme
+            ? 'Awaiting Other Player...'
+            : 'Choose Your Theme'
+        }
+      >
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            marginBottom: '1em',
+          }}
+        >
           {themes.map((theme) => (
             <Card
               title={themesData[theme].label}
@@ -61,34 +81,35 @@ export const SelectTheme = ({
           ))}
         </div>
 
-        {selectedTheme && !selectedCharacter && (
-          <>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              {themesData[selectedTheme].characters.map((character) => (
+        <TransitionGroup>
+          {selectedTheme && (
+            <CSSTransition timeout={500} classNames="item">
+              <Card title="Select Character">
                 <div
-                  onClick={() => onSelectCharacter(character)}
-                  className="character-img"
+                  style={{ display: 'flex', justifyContent: 'space-between' }}
                 >
-                  <img
-                    src={`/img/${characters[selectedTheme][character].image}`}
-                  />
-                  {/* <div>{characters[selectedTheme][character].label}</div> */}
+                  {themesData[selectedTheme].characters.map((character) => (
+                    <div
+                      onClick={() => onSelectCharacter(character)}
+                      className={classNames(
+                        'character-img',
+                        selectedCharacter === character ? 'selected' : null,
+                        otherPlayersCharacter === character
+                          ? 'other-player-selected'
+                          : null
+                      )}
+                    >
+                      <img
+                        src={`/img/${characters[selectedTheme][character].image}`}
+                      />
+                      {/* <div>{characters[selectedTheme][character].label}</div> */}
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-            <button onClick={() => onSelectTheme(null)}>Go back</button>
-          </>
-        )}
-
-        {selectedCharacter && selectedTheme && (
-          <div>
-            {isAwaitingOtherPlayer && <div>Awaiting other player...</div>}
-            <button disabled={isAwaitingOtherPlayer} onClick={onStartGame}>
-              Start
-            </button>
-            <button onClick={() => onSelectCharacter(null)}>Go back</button>
-          </div>
-        )}
+              </Card>
+            </CSSTransition>
+          )}
+        </TransitionGroup>
       </PageContent>
     </div>
   );

@@ -17,7 +17,36 @@
   'components/card', 'components/text-input', 'components/radio';
 
 // 6. Page-specific styles
-@import 'pages/home', 'pages/config', 'pages/host-lobby-page', 'pages/join-game', 'pages/theme';
+@import 'pages/home', 'pages/config', 'pages/host-lobby-page', 'pages/join-game',
+  'pages/theme', 'pages/game';
 
 // 7. Themes
 @import 'themes/default';
+
+.item-enter {
+  opacity: 0;
+}
+.item-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+.item-exit {
+  opacity: 1;
+}
+.item-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
+}
+
+
+.game--container {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  width: 100%;
+}
+
+.cell {
+  width: 150px;
+  height: 150px;
+}
+

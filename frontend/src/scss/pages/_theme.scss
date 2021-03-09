@@ -6,15 +6,40 @@
   }
 
   .character-img {
-    background-color: #fff;
+    // background-color: #fff;
     border-radius: 12px;
-    box-shadow: $shadow-md;
-    // padding: 5px;
+    // box-shadow: $shadow-md;
+    height: 150px;
+    width: 150px;
+    padding: 5px;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      box-shadow: $shadow-sm;
+      transform: rotate(3deg);
+    }
 
     img {
       width: 100%;
       border-radius: 12px;
       border: 5px solid $light-grey;
+      transition: border-color .2s;
     }
+    &.selected {
+      img {
+        border-color: $primary-color;
+      }
+      box-shadow: $shadow-sm;
+    }
+    &.other-player-selected {
+      img {
+        border-color: red;
+      }
+      box-shadow: $shadow-sm;
+    }
+  }
+  .bottom-controls {
+    margin-top: 2.5em;
   }
 }
