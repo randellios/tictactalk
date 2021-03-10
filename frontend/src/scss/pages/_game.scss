@@ -1,23 +1,124 @@
 .game-page {
+  .top-notification {
+    background-size: 100% 100%;
+    position: absolute;
+    width: 70%;
+    padding: 20px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: $header-font-stack;
+    font-size: 1.7em;
+    margin-top: -20px;
+  }
+  .bottom-controls {
+    margin-top: 30px;
+    display: flex;
+
+    .next-round-controls {
+      margin-left: auto;
+    }
+
+    .confirm-go-controls {
+      margin-left: auto;
+    }
+
+    .controls-container {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: $shadow-sm;
+      padding: 6px;
+      position: relative;
+      padding-top: 12px;
+
+      .controls-title {
+        position: absolute;
+        text-align: center;
+        left: 0;
+        right: 0;
+        top: 0;
+        font-weight: bold;
+        span {
+          background: #fff;
+          padding: 0 15px;
+        }
+      }
+
+      .controls-content {
+        border: 5px solid $light-grey;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        padding-top: 20px;
+      }
+    }
+  }
   .game-container {
     background-size: cover;
     border-radius: 12px;
     box-shadow: $shadow-sm;
+    padding: 80px;
+    position: relative;
+    overflow: hidden;
+
+
+    .info-strip {
+      background: rgba(0, 0, 0, 0.7);
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      left: 0;
+      color: rgba(255, 255, 255, 0.8);
+      padding: 10px 20px;
+
+      .info-strip-content {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+    }
   }
 
-  .game-board {
-    width: 300px;
-    
-    .game-board-row {
-      width: 100%;
-      display: flex;
+  .board-container {
+    background-size: contain;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    justify-content: center;
+    position: relative;
 
-      .game-board-column {
-        background-image: url('/img/frame.png');
-        border: 1px solid black;
-        width: 100px;
-        height: 100px;
+    .game-square {
+      .game-square-content {
+        transition: all .2s;
+        &:not(.completed):hover {
+          background: rgba(0, 0, 0, 0.5) !important;
+        }
       }
+    }
+
+    .word-hint {
+      position: absolute;
+      color: rgba(255, 255, 255, 0.6);
+    }
+    .completed-character {
+      width: 100%;
+    }
+    .mascot-character {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 120px;
+    }
+  }
+
+  .hanger-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: -50px;
+    img {
+      height: 140px;
     }
   }
 }

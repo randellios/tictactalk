@@ -22,6 +22,7 @@ const AwaitPairing = ({
         soundTypes,
         nextMove,
         rounds,
+        isPaired: true,
       });
       setActiveView('SELECT_THEME');
     });
@@ -41,7 +42,12 @@ const AwaitPairing = ({
           </div>
         </Card>
         <div className="bottom-controls">
-          <button className="game-button primary" onClick={() => setActiveView('CONFIGURE')}>Back</button>
+          <button
+            className="game-button primary"
+            onClick={() => setActiveView('CONFIGURE')}
+          >
+            Back
+          </button>
         </div>
       </PageContent>
     </div>

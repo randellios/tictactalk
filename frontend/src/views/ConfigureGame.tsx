@@ -118,7 +118,13 @@ export const ConfigureGame: FunctionComponent<ConfigureGameProps> = ({
     pushGameUpdate(config);
 
     if (nextAction === 'THEME') {
-      pushGameUpdate({ activeView: 'SELECT_THEME', levelType: '', theme: '' });
+      pushGameUpdate({
+        activeView: 'SELECT_THEME',
+        levelType: '',
+        theme: '',
+        hostCharacter: '',
+        guestCharacter: '',
+      });
     }
     if (nextAction === 'GAME') {
       emitMessage('START_GAME');
